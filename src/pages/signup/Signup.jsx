@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import styles from '../login/Login.module.css';
+import { useSignup } from '../../hooks/useSignup';
 
 
 export default function Signup() {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [displayName, setDisplayName] = useState(''); // firebase에서 사용자의 별명을 관리하는 이름
+
+  // useSignup 커스텀 Hook 실행, 구조분해할당
+  // const [error, isPending, signup] = useSignup(); // error, isPending는 사용하지 않아서 가져오지 않았다
+  const [signup] = useSignup();
+
 
   // 사용자 아이디, 비밀번호 데이터
   const handleData = (event) => {
@@ -21,6 +27,7 @@ export default function Signup() {
   // 로그인 폼 제출
   const handleSubmit = (event) => {
     event.preventDefault();
+    signup(email, pw, displayName);
     console.log(email, pw, displayName);
   }
 
