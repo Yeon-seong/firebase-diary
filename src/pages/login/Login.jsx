@@ -89,13 +89,25 @@ export default function Login() {
         {/* 사용자 아이디 */}
         <input
           onChange={handleData}
-          className="input-style" id="user-email" type="email" value={id} required />
+          className="input-style"
+          id="user-email"
+          type="email"
+          value={id}
+          autoComplete="email"
+          required
+        />
 
         {/* 사용자 비밀번호 */}
         <label className="label-style" htmlFor="user-pw">비밀번호</label>
         <input
           onChange={handleData}
-          className="input-style" id="user-pw" type="password" value={pw} required />
+          className="input-style"
+          id="user-pw"
+          type="password"
+          value={pw}
+          autoComplete="current-password"
+          required
+        />
 
         <button className="black-btn" type="submit">로그인</button>
       </form>
