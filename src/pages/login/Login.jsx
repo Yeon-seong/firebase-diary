@@ -3,13 +3,13 @@ import styles from './Login.module.css';
 
 
 export default function Login() {
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
 
   // 사용자 아이디, 비밀번호 데이터
   const handleData = (event) => {
     if (event.target.type === 'email') {
-      setId(event.target.value);
+      setEmail(event.target.value);
     } else {
       setPw(event.target.value);
     }
@@ -18,7 +18,7 @@ export default function Login() {
   // 로그인 폼 제출
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(id, pw);
+    console.log(email, pw);
   }
 
 
@@ -92,7 +92,7 @@ export default function Login() {
           className="input-style"
           id="user-email"
           type="email"
-          value={id}
+          value={email}
           autoComplete="email"
           required
         />

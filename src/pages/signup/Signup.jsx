@@ -3,14 +3,14 @@ import styles from '../login/Login.module.css';
 
 
 export default function Signup() {
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [displayName, setDisplayName] = useState(''); // firebase에서 사용자의 별명을 관리하는 이름
 
   // 사용자 아이디, 비밀번호 데이터
   const handleData = (event) => {
     if (event.target.type === 'email') {
-      setId(event.target.value);
+      setEmail(event.target.value);
     } else if (event.target.type === 'password') {
       setPw(event.target.value);
     } else if (event.target.type === 'text') {
@@ -21,7 +21,7 @@ export default function Signup() {
   // 로그인 폼 제출
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(id, pw);
+    console.log(email, pw, displayName);
   }
 
 
@@ -95,7 +95,7 @@ export default function Signup() {
           className="input-style"
           id="user-email"
           type="email"
-          value={id}
+          value={email}
           autoComplete="email"
           required
         />
