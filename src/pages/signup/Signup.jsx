@@ -10,7 +10,7 @@ export default function Signup() {
 
   // useSignup 커스텀 Hook 실행, 구조분해할당
   // const [error, isPending, signup] = useSignup(); // error, isPending는 사용하지 않아서 가져오지 않았다
-  const [signup] = useSignup();
+  const {signup} = useSignup();
 
 
   // 사용자 아이디, 비밀번호 데이터
