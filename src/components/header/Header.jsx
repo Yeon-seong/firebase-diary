@@ -38,12 +38,12 @@ export default function Header() {
               }
             </>
           )}
-          {/* ----- 만약 사용자의 상태가 null 이 아니라면 ----- */}
-          {!user && (
+          {/* ----- 만약 사용자의 상태가 null이 아니라면 ----- */}
+          {user && (
             <>
               {/* 공통 스타일 : 재사용되는 부분이라 로그인 버튼은 index.js에서 불러오고 있다 */}
               <p className="hello">
-                환영합니다 <strong>{user}</strong>님!
+                환영합니다 <strong>{user.displayName}</strong>님!
               </p>
               <Link to="/" className="btn-join" onClick={logout}>로그아웃</Link>
             </>
