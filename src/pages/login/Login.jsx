@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import styles from './Login.module.css';
+import { useLogin } from '../../hooks/useLogin';
 
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
+
+  // useLogin 커스텀 Hook 실행
+  const {login, isPending, error} = useLogin();
+
 
   // 사용자 아이디, 비밀번호 데이터
   const handleData = (event) => {
@@ -18,6 +23,7 @@ export default function Login() {
   // 로그인 폼 제출
   const handleSubmit = (event) => {
     event.preventDefault();
+    login(email, pw);
     console.log(email, pw);
   }
 
@@ -109,7 +115,10 @@ export default function Login() {
           required
         />
 
-        <button className="black-btn" type="submit">로그인</button>
+        {/* 조건부 렌더링 */}
+        {!isPending && <button className="black-btn" type="submit">로그인</button>}
+        {isPending && <strong>로그인 중 입니다...</strong>}
+        {error && <strong>error</strong>}
       </form>
     </main>
   )
