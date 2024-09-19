@@ -26,8 +26,8 @@ export const useLogin = () => {
       dispatch({ type: 'login', payload: user });
       setIsPending(false);
       setError(null);
-
     })
+
     // 로그인 실패
     .catch((error) => {
       setError(error.message);
@@ -35,5 +35,5 @@ export const useLogin = () => {
       setIsPending(false);
     });
   }
-  return { error, isPending, login };
+  return [ login, isPending, error ];
 };

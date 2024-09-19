@@ -31,5 +31,5 @@ export const useLogout = () => {
       console.error(error.message);
     });
   }
-  return { error, isPending, logout };
+  return [ logout, isPending, error ];
 };

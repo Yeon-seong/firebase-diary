@@ -8,7 +8,7 @@ export default function Login() {
   const [pw, setPw] = useState('');
 
   // useLogin 커스텀 Hook 실행
-  const {login, isPending, error} = useLogin();
+  const [ login, isPending, error ] = useLogin();
 
 
   // 사용자 아이디, 비밀번호 데이터
