@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { appAuth } from '../firebase/config';
+import { useAuthContext } from './useAuthContext';
 
 
 /* 회원가입 커스텀 Hook : 에러인지, 통신 중인지 아닌지 확인한다 */
@@ -13,6 +14,9 @@ export const useSignup = () => {
   // 통신 상태를 관리 => true: 통신 중o, false: 통신 중x
   const [isPending, setIsPending] = useState(false);
 
+
+  // 전역 context에서 제공되는 값 중, dispatch 함수를 받아온다
+  const { dispatch } = useAuthContext();
 
   // 회원가입을 처리할 핵심적인 함수 : 3가지 데이터를 매개변수로 받는다
   // setIsPending 함수가 실행되면 통신이 시작된다
@@ -34,6 +38,7 @@ export const useSignup = () => {
         // 사용자 프로파일을 업데이트 : displayName(별명)을 등록한다
         updateProfile(appAuth.currentUser, { displayName })
         .then(() => {
+          dispatch({ type: 'login', payload: user });
           setIsPending(false);
         }).catch((error) => {
           const errorMessage = error.message;
