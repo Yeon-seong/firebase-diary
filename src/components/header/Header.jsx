@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './Header.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.svg';
-import { useLogout } from '../hooks/useLogout';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useLogout } from '../../hooks/useLogout';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 
 export default function Header() {
