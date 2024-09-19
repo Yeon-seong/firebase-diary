@@ -10,6 +10,8 @@ const authReducer = (state, action) => {
     // dispatch의 액션 타입이 로그인인 경우 타입 지정(로그인, 회원가입)
     case 'login':
       return { ...state, user: action.payload }
+    case 'logout':
+      return { ...state, user: null }
     default:
       return state;
   }
@@ -21,7 +23,7 @@ const AuthContextProvider = ({ children }) => {
 
   // useReducer는 상태와 디스패치 함수를 반환한다
   const [state, dispatch] = useReducer(authReducer, {user: null});
-  console.log(state);
+  console.log('context: ', state);
   return (
     // 전역으로 관리될 value
     <AuthContext.Provider value={{ ...state, dispatch }}>
