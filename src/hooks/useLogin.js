@@ -25,6 +25,7 @@ export const useLogin = () => {
       const user = userCredential.user;
       dispatch({ type: 'login', payload: user });
       setIsPending(false);
+      setError(null);
 
     })
     // 로그인 실패

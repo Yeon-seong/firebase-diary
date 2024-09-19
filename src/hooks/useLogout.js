@@ -23,6 +23,7 @@ export const useLogout = () => {
       // type은 필수지만 payload는 생략해도 된다.
       dispatch({ type: 'logout' });
       setIsPending(false);
+      setError(null);
       
     }).catch((error) => {
       setIsPending(false);
