@@ -1,14 +1,19 @@
 import React from 'react';
 import DiaryForm from './DiaryForm';
 import styles from './Home.module.css';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 
 export default function Home() {
+
+  const { user } = useAuthContext();
+
   return (
     <div className="container">
     <main className={styles["diary-main"]}>
       <h2 className={styles["heart"]}>2023.02.27의 비밀일기</h2>
-      <DiaryForm />
+      {/* 사용자 아이디는 파이어베이스에서 uid로 무조건 적어야 한다. */}
+      <DiaryForm userId={user.uid} />
     </main>
 
     <section>

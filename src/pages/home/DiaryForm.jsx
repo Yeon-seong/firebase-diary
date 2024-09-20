@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Home.module.css';
+import { useFireStore } from '../../hooks/useFireStore';
 
-export default function DiaryForm() {
+export default function DiaryForm({ userId }) {
 
 const [title, setTitle] = useState('');
 const [secret, setSecret] = useState('');
+const { addDocument, response } = useFireStore('diary');
 
 
 const handleData = (event) => {
@@ -17,8 +19,17 @@ const handleData = (event) => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  console.log(title, secret);
+  // console.log(title, secret);
+  console.log(userId, title, secret);
+  addDocument({ userId, title, secret });
 }
+
+useEffect(() => {
+  if(response.isSuccess) {
+    setTitle('');
+    setSecret('');
+  }
+}, [response.isSuccess]);
 
 return (
   <form onSubmit={handleSubmit}>
